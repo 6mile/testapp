@@ -9,6 +9,8 @@ wordpress:
 
 wordpress_db:
   image: mariadb
+  volumes:
+    - /opt/buildstack/apps/testapp/mysql:/var/lib/mysql/:rw
   environment:
     MYSQL_ROOT_PASSWORD: P@ssw0rd
 
@@ -17,7 +19,7 @@ phpmyadmin:
   links:
     - wordpress_db:mysql
   ports:
-    - 8181:80
+    - 8081:80
   environment:
     MYSQL_USERNAME: root
     MYSQL_ROOT_PASSWORD: P@ssw0rd
